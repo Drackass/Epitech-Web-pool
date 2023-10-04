@@ -1,0 +1,741 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <meta name="author" content="Jonathan Nau" />
+  <title>Web dev seminar</title>
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    span.underline{text-decoration: underline;}
+    div.column{display: inline-block; vertical-align: top; width: 50%;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+  </style>
+  <base target="_blank">
+
+  <style type="text/css">
+  /*
+    HEADER
+  */
+
+  header {
+    height:500px;
+    background: url("images/cover_preMSC.jpg") right bottom;
+    background-size: 45%;
+    margin:0px;
+    color: white;
+  }
+
+  header h1 {
+    padding: 200px 0 0 30px;
+    text-transform: uppercase;
+    color: white;  
+    font-size: 60px;
+    margin:  0;
+  }
+
+  header p.subtitle {
+    padding: 170px 0 0 30px;
+    margin:  0px;
+    padding-top: 0px;
+    text-transform: uppercase;
+    font-size: 20px;
+  }
+
+  header p.author {
+    display: none;
+  }
+
+
+
+
+  /*
+    BLOCKS
+  */
+
+  .note {
+      border: solid 1px rgb(200, 200, 200);
+      box-shadow: 4px 4px 4px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.2);
+      border-radius:10px;    
+      padding: 10px 10px 10px 20px;
+      margin:30px 20px 20px 20px;
+      display: flex;
+      flex-direction: column;
+      background-color:rgba(255, 0, 0, 0.1);    
+  }
+  .note:before {
+    content: url(images/icon_note_small.png);
+    margin-top:-35px;
+    margin-left:-35px;
+    margin-bottom: -20px;
+  }
+
+  .warning {
+      border: solid 1px rgb(200, 200, 200);
+      box-shadow: 4px 4px 4px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.2);
+      border-radius:10px;
+      margin:30px 20px 20px 20px;
+      background-color: rgba(88, 147, 193, 0.1);
+      padding: 10px 10px 10px 20px;
+      display: flex;
+      flex-direction: column;
+  }
+  .warning:before {
+    content: url(images/icon_warning_small.png);
+    margin-top:-35px;
+    margin-left:-35px;
+    margin-bottom: -20px;
+  }
+
+  .info {
+      border: solid 1px rgb(200, 200, 200);
+      box-shadow: 4px 4px 4px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.2);
+      border-radius:10px;    
+      background-color: rgb(255, 255, 255);
+      padding: 10px 10px 10px 20px;
+      margin:30px 20px 20px 20px;
+      display: flex;
+      flex-direction: column;
+  }
+  .info:before {
+    content: url(images/icon_info_small.png);
+    margin-top:-35px;
+    margin-left:-35px;
+    margin-bottom: -20px;
+  }
+
+  .tip {
+      border: solid 1px rgb(200, 200, 200);
+      box-shadow: 4px 4px 4px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.2);
+      border-radius:10px;    
+      background-color: rgba(240, 220, 154, 0.1);
+      padding: 10px 10px 10px 20px;
+      margin:30px 20px 20px 20px;
+      display: flex;
+      flex-direction: column;
+  }
+  .tip:before {
+    content: url(images/icon_tip_small.png);
+    margin-top:-35px;
+    margin-left:-35px;
+    margin-bottom: -20px;
+  }
+
+  .terminal {
+      border: solid 1px rgb(200, 200, 200);
+      box-shadow: 4px 4px 4px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.2);
+      border-radius:10px;    
+      background-color: rgba(240, 220, 154, 0.1);
+      padding: 10px 10px 10px 20px;
+      margin:30px 20px 20px 20px;
+      display: flex;
+      flex-direction: column;
+  }
+  .terminal:before {
+    content: url(images/icon_terminal_small.png);
+    margin-top:-35px;
+    margin-left:-35px;
+    margin-bottom: -20px;
+  }
+
+  /*
+    QUOTE
+  */
+
+  .quote {
+      border-left: solid 3px rgb(140, 140, 140);
+      border-radius:0 10px 10px 0;    
+      padding: 0px 0px 0px 20px;
+      margin:30px 40px 20px 40px;
+      display: flex;
+      flex-direction: column;
+      background-color:rgba(140, 140, 140, 0.1); 
+      position: relative;   
+  }
+
+  .quote author {
+      position: absolute;
+      bottom: 0;
+      right: 0;
+      font-weight: bold;
+      font-style: normal;
+  }
+  .quote author:before {
+    content: '-- ';
+  }
+  .quote author:after {
+    content: '-- ';
+  }
+
+  /*
+    COLUMNS
+  */
+
+  div.column-33 {
+    width:  31%;
+    display: inline-block;
+    min-width: 120px;
+    vertical-align: middle;
+    padding-left:  15px;
+  }
+  div.column-50 {
+    width:  48%;
+    display: inline-block;
+    min-width: 120px;
+    vertical-align: middle;
+    padding-left:  15px;
+  }
+  div.column-66 {
+    width:  65%;
+    display: inline-block;
+    min-width: 120px;
+    vertical-align: middle;
+    padding-left:  15px;
+  }
+  div.column {
+    display: inline-block;
+    min-width: 120px;
+    vertical-align: middle;
+    padding-left:  15px;
+  }
+  div.columns {
+    padding-left:  -15px;
+    text-align: justify;
+    text-justify: inter-word;
+  }
+
+
+
+  /*
+    FOOTER
+  */
+
+  div.footer {
+    background: #FFFFFF url("images/footer_preMSC.jpg") no-repeat;
+    height:  215px;
+  }
+
+
+
+
+  /*
+    GENERIC
+  */
+
+  html {
+    font-size: 100%;
+    overflow-y: scroll;
+    -webkit-text-size-adjust: 100%;
+    -ms-text-size-adjust: 100%;
+  }
+
+  body {
+    color: #444;
+    font-family: Montserrat-thin, sans-serif;
+    font-size: 12px;
+    margin: auto;
+    padding:  0 10px 0 10px;
+    max-width: 800px;
+    background: #fefefe;
+  }
+
+  a {
+    color: #016bb3;
+
+  }
+
+  a:visited {
+    color: #0b0080;
+  }
+
+  a:hover {
+    color: #06e;
+  }
+
+  a:active {
+    color: #faa700;
+  }
+
+  a:focus {
+    outline: thin dotted;
+  }
+
+  *::-moz-selection {
+    background: rgba(255, 255, 0, 0.3);
+    color: #000;
+  }
+
+  *::selection {
+    background: rgba(255, 255, 0, 0.3);
+    color: #000;
+  }
+
+  a::-moz-selection {
+    background: rgba(255, 255, 0, 0.3);
+    color: #016bb3;
+  }
+
+  a::selection {
+    background: rgba(255, 255, 0, 0.3);
+    color: #016bb3;
+  }
+
+  p {
+    margin: 1em 0;
+  }
+
+  img {
+    max-width: 100%;
+    border-radius: 10px;
+  }
+
+  h1 {
+    color: #016bb3;
+    line-height: 100%;
+    margin-top: 2em;
+    font-weight: normal;
+    font-size: 3em;
+  }
+
+  h2 {
+    color: #016bb3;
+    line-height: 110%;
+    margin-top: 2em;
+    font-weight: bold;
+  }
+
+  h3, h4, h5, h6 {
+    color: #111;
+    line-height: 125%;
+    margin-top: 2em;
+    font-weight: normal;
+  }
+
+
+  blockquote {
+    color: #666666;
+    margin: 0;
+    padding-left: 3em;
+    border-left: 0.5em #EEE solid;
+  }
+
+  hr {
+    display: block;
+    height: 2px;
+    border: 0;
+    border-top: 1px solid #aaa;
+    border-bottom: 1px solid #eee;
+    margin: 1em 0;
+    padding: 0;
+  }
+
+  pre, code, kbd, samp {
+    color: #000;
+    font-family: monospace, monospace;
+    _font-family: 'courier new', monospace;
+    font-size: 0.98em;
+  }
+
+  pre {
+    white-space: pre;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+  }
+
+  b, strong {
+    font-weight: bold;
+  }
+
+  dfn {
+    font-style: italic;
+  }
+
+  ins {
+    background: #ff9;
+    color: #000;
+    text-decoration: none;
+  }
+
+  mark {
+    background: #ff0;
+    color: #000;
+    font-style: italic;
+    font-weight: bold;
+  }
+
+  sub, sup {
+    font-size: 75%;
+    line-height: 0;
+    position: relative;
+    vertical-align: baseline;
+  }
+
+  sup {
+    top: -0.5em;
+  }
+
+  sub {
+    bottom: -0.25em;
+  }
+
+  ul, ol {
+    margin: 1em 0;
+    padding: 0 0 0 2em;
+  }
+
+  li p:last-child {
+    margin-bottom: 0;
+  }
+
+  ul ul, ol ol {
+    margin: .3em 0;
+  }
+
+  dl {
+    margin-bottom: 1em;
+  }
+
+  dt {
+    font-weight: bold;
+    margin-bottom: .8em;
+  }
+
+  dd {
+    margin: 0 0 .8em 2em;
+  }
+
+  dd:last-child {
+    margin-bottom: 0;
+  }
+
+  img {
+    border: 0;
+    -ms-interpolation-mode: bicubic;
+    vertical-align: middle;
+  }
+
+  figure {
+    display: block;
+    text-align: center;
+    margin: 1em 0;
+  }
+
+  figure img {
+    border: none;
+    margin: 0 auto;
+  }
+
+  figcaption {
+    font-size: 0.8em;
+    font-style: italic;
+    margin: 0 0 .8em;
+  }
+
+  table {
+    margin-bottom: 2em;
+    border-bottom: 1px solid #ddd;
+    border-right: 1px solid #ddd;
+    border-spacing: 0;
+    border-collapse: collapse;
+  }
+
+  table th {
+    padding: .2em 1em;
+    background-color: #eee;
+    border-top: 1px solid #ddd;
+    border-left: 1px solid #ddd;
+  }
+
+  table td {
+    padding: .2em 1em;
+    border-top: 1px solid #ddd;
+    border-left: 1px solid #ddd;
+    vertical-align: top;
+  }
+
+  .author {
+    font-size: 1.2em;
+    text-align: center;
+  }
+
+  @media only screen and (min-width: 480px) {
+    body {
+      font-size: 14px;
+    }
+  }
+  @media only screen and (min-width: 768px) {
+    body {
+      font-size: 16px;
+    }
+  }
+  @media print {
+    * {
+      background: transparent !important;
+      color: black !important;
+      filter: none !important;
+      -ms-filter: none !important;
+    }
+
+    a, a:visited {
+      text-decoration: underline;
+    }
+
+    hr {
+      height: 1px;
+      border: 0;
+      border-bottom: 1px solid black;
+    }
+
+    a[href]:after {
+      content: " (" attr(href) ")";
+    }
+
+    abbr[title]:after {
+      content: " (" attr(title) ")";
+    }
+
+    .ir a:after, a[href^="javascript:"]:after, a[href^="#"]:after {
+      content: "";
+    }
+
+    pre, blockquote {
+      border: 1px solid #999;
+      padding-right: 1em;
+      page-break-inside: avoid;
+    }
+
+    tr, img {
+      page-break-inside: avoid;
+    }
+
+    img {
+      max-width: 100% !important;
+    }
+
+    @page :left {
+      margin: 15mm 20mm 15mm 10mm;
+  }
+
+    @page :right {
+      margin: 15mm 10mm 15mm 20mm;
+  }
+
+    p, h2, h3 {
+      orphans: 3;
+      widows: 3;
+    }
+
+    h2, h3 {
+      page-break-after: avoid;
+    }
+  }
+  </style>
+</head>
+<body>
+<header id="title-block-header">
+<h1 class="title">Web dev seminar</h1>
+<p class="subtitle">Day 01 - Unix Environments</p>
+<p class="author">Jonathan Nau</p>
+</header>
+<h1 id="contents">Contents</h1>
+<div class="warning">
+<p>This day is tested by the autograder!</p>
+</div>
+<!--ts-->
+<ul>
+<li><a href="#contents">Contents</a>
+<ul>
+<li><a href="#intranet-and-manifesto">Intranet and Manifesto</a></li>
+<li><a href="#discovering-your-environment">Discovering your environment</a></li>
+<li><a href="#task-01">Task 01</a></li>
+<li><a href="#task-02">Task 02</a></li>
+<li><a href="#task-03">Task 03</a></li>
+<li><a href="#access-your-repositories---git-and-github">Access your repositories - git and github</a></li>
+<li><a href="#do-a-delivery---clone-a-repository-and-push-your-work">Do a delivery - Clone a repository and push your work</a></li>
+<li><a href="#task-04">Task 04</a></li>
+<li><a href="#task-05">Task 05</a></li>
+<li><a href="#task-06">Task 06</a></li>
+<li><a href="#task-07">Task 07</a></li>
+</ul></li>
+</ul>
+<!-- Created by https://github.com/ekalinin/github-markdown-toc -->
+<!-- Added by: switch, at: lun. 21 nov. 2022 14:21:31 CET -->
+<!--te-->
+<h2 id="intranet-and-manifesto">Intranet and Manifesto</h2>
+<p>Using the intranet, register for all of the week’s activities.</p>
+<p>Now, take a moment to read the document given alongside this one : “the manifesto”, to understand <strong>our values</strong>.</p>
+<h2 id="discovering-your-environment">Discovering your environment</h2>
+<p>First, take some time to discover your working environment (keywords, commands,…)<br />
+Then learn how to lock your workstation, it might prove very useful.</p>
+<h2 id="task-01">Task 01</h2>
+<p>Create a directory named <code>delivery</code> in your home directory’s root.<br />
+Within that directory, create another one named <code>task01</code>, which will contain:</p>
+<ul>
+<li>an empty file named <code>test01</code> with the default permissions,</li>
+<li>a file named <code>test02</code> containing “<strong>If you don’t struggle, you don’t improve.</strong>”. Everyone must have the rights to read and execute this file, but only you can write in it,</li>
+<li>a symbolic link (symlink) named <code>test03</code>, which is a reference to <code>test02</code>.</li>
+</ul>
+<div class="tip">
+<p>Read the <strong>ln</strong> man carefully!</p>
+</div>
+<h2 id="task-02">Task 02</h2>
+<p>Create a file <code>delivery/task02/z</code>, which displays the character ‘<strong>Z</strong>’ followed by a line feed (#cr) when the binary <code>cat</code> is used to read it:</p>
+<p> </p>
+<div class="terminal">
+<p>cat -e z<br />
+Z$</p>
+</div>
+<h2 id="task-03">Task 03</h2>
+<p>Write in <code>delivery/task03/midLS</code>, a command that lists the current repository’s files and directories (without hidden files, ellipses, or files starting with a dot) sorted alphabetically.</p>
+<p>Files and directories should be separated by commas and directories must end with a slash.</p>
+<div class="warning">
+<p>Add execution permission to everyone</p>
+</div>
+<h2 id="access-your-repositories---git-and-github">Access your repositories - git and github</h2>
+<p>From this point onwards, all your projects will have to be turned-in in a Github repositories.</p>
+<p>Github repositores are simply <strong>git repositories</strong> hosted on <a href="https://github.com">github.com</a>.</p>
+<p>So first, create an account on <a href="https://github.com">github.com</a> using your Epitech email address.</p>
+<div class="tip">
+<p>If you already have a GitHub account, you can simply add your Epitech’s email address to the list of emails linked to your account.</p>
+</div>
+<p>On GitHub, all your Epitech’s projects will be grouped in an organization. If you check your emails, you should already have been invited to the Epitech organizations for your promotion. Accept this invitation using the link in the mail.</p>
+<div class="tip">
+<p>If you’ve not received an invitation email, contact your local pedagogical team about it.</p>
+</div>
+<p>Okay, now you’re in the organization. And for this first time, you’re even now part of a team of this organizations which give you access to the repository to delivery today’s work.</p>
+<div class="warning">
+<p>From now on, for every project, you will be given access to a group on the GitHub organization and thus have access to the project’s dedicated repository.</p>
+</div>
+<p>Now generate an ssh key named <code>id_rsa</code> and add it to yout GitHub account. This key will allow you to authenticate with github (and thus accessing your repositories) via your terminal.</p>
+<p>One last thing: be sure to authorize the previously added ssh key for use with single sign-on on <a href="https://github.com">GitHub.com</a>.</p>
+<div class="tip">
+<p>For more information, see the document “How to turn-in” on the intranet (<a href="https://intra.epitech.eu/file/public/technical-documentations/how_to_turn_in.pdf">here</a>).</p>
+</div>
+<h2 id="do-a-delivery---clone-a-repository-and-push-your-work">Do a delivery - Clone a repository and push your work</h2>
+<p>Now, it is time to check if the previous part really works. To do so, we are going to clone the repository for todays tasks.<br />
+The repository is available for git at the following address:<br />
+<strong>git@github.com:EpitechMscPromo<code>$PROMOTIONYEAR</code>/T-WEB-500-<code>$CITY</code>-5-1-webpoold01-<code>$LEADER</code>.git</strong></p>
+<p>Where <code>$PROMOTIONYEAR</code> stands for your current promotion year (2025 for the 2022/2023 academic year), <code>$CITY</code> is a three letter code indicating your city and <code>$LEADER</code> is the name of the project group leader (for the pool, you’re alone: you are the leader).</p>
+<div class="tip">
+<p>You can check on the organization page of GitHub to see the list of all the repositories you have access to.<br />
+From a repository webpage, you can click on the “Code” button to have access to the repository link (to clone it using SSH).</p>
+</div>
+<p>If it worked, you should have a result similar to:</p>
+<div class="terminal">
+<p>git clone git@github.com:EpitechMscProPromo2025/T-WEB-500-STG-5-1-webpoold01-jonathan1.nau.git into ‘T-WEB-500-STG-5-1-webpoold01-jonathan1.nau’…<br />
+warning: You appear to have cloned an empty repository.<br />
+Checking connectivity… done</p>
+</div>
+<p>Now, You have to move all task directories (previously created) into the repository of the day.<br />
+Then, you have to inform “git” of your wish to <strong>add</strong> these files.<br />
+After that, you have to <strong>commit</strong> a new local revision which contains all these modifications.<br />
+Finally, you have to <strong>push</strong> this revision to the remote server.<br />
+From now on, commit and push at the end of each task.</p>
+<div class="warning">
+<p>Make sure that the file permissions have not been altered during the copy/move.</p>
+</div>
+<div class="tip">
+<p>Have you read the document on the intranet already?</p>
+</div>
+<h2 id="task-04">Task 04</h2>
+<p>Write a file named <code>mr_clean</code> - stored at the root of the repository of the day - a command to find and delete every file from the current directory and all subdirectories which end by <code>~</code> or which start <strong>and</strong> end by <code>#</code>.<br />
+Give execution rights to the owner of the file.</p>
+<div class="warning">
+<p>Only one command is allowed (no “;”, neither “&amp;&amp;” or anything…)</p>
+</div>
+<div class="tip">
+<p>Read carefully the manual of <code>find</code></p>
+</div>
+<h2 id="task-05">Task 05</h2>
+<p>Write a shell script (using bash as shell) named <code>push_that.sh</code> at the root of your repository.<br />
+The script must add all of the current folder’s files and push them to the repository.</p>
+<p>The script must take a commit message as parameter and should be able to handle simple problems and still push your files.</p>
+<div class="tip">
+<p>having trouble figuring out how to retrive parameters? <code>man bash</code>.</p>
+</div>
+<div class="warning">
+<p>Where you’re writing a script, dont’t forget the <strong>shebang</strong>!<br />
+Don’t forget to give execution right to shell scripts as well!</p>
+</div>
+<div class="warning">
+<p>Don’t use this script if you share a repository with other people.</p>
+</div>
+<h2 id="task-06">Task 06</h2>
+<p>Reproduce the folders structure displayed below.</p>
+<div class="terminal">
+<p>tree -FQ task06 | head -n 32</p>
+<pre class="console"><code>&quot;task06&quot;/
+|-- &quot;1910s&quot;/
+|   |-- &quot;1911&quot; -&gt; &quot;../Solvay Conferences on Physics/The theory of radiation and quanta&quot;/
+|   `-- &quot;1913&quot; -&gt; &quot;../Solvay Conferences on Physics/The structure of matter&quot;/
+|-- &quot;1920s&quot;/
+|   |-- &quot;1921&quot; -&gt; &quot;../Solvay Conferences on Physics/Atoms and electrons&quot;/
+|   |-- &quot;1924&quot; -&gt; &quot;../Solvay Conferences on Physics/Electric conductivity of metals and related problems&quot;/
+|   `-- &quot;1927&quot; -&gt; &quot;../Solvay Conferences on Physics/Electrons and photons&quot;/
+|-- &quot;1930s&quot;/
+|   |-- &quot;1930&quot; -&gt; &quot;../Solvay Conferences on Physics/Magnetism&quot;/
+|   |-- &quot;1931&quot; -&gt; &quot;../Solvay Conferences on Chemistry/Constitution and Configuration of Organic Molecules&quot;/
+|   |-- &quot;1934&quot; -&gt; &quot;../Solvay Conferences on Chemistry/Oxygen, and its chemical and biological reactions&quot;/
+|   `-- &quot;1937&quot; -&gt; &quot;../Solvay Conferences on Chemistry/Vitamins and Hormones&quot;/
+|-- &quot;1940s&quot;/
+|   `-- &quot;1947&quot; -&gt; &quot;../Solvay Conferences on Chemistry/Isotopes&quot;/
+|-- &quot;1950s&quot;/
+|-- &quot;Professors&quot;/
+|   |-- &quot;Frederic Swarts&quot;
+|   |-- &quot;Hendrik Lorentz&quot;
+|   |-- &quot;Paul Karrer&quot;
+|   |-- &quot;Paul Langevin&quot;
+|   `-- &quot;William Jackson Pope&quot;
+|-- &quot;Solvay Conferences on Chemistry&quot;/
+|   |-- &quot;Constitution and Configuration of Organic Molecules&quot;/
+|   |   `-- &quot;chair&quot; -&gt; &quot;../../Professors/William Jackson Pope&quot;
+|   |-- &quot;Isotopes&quot;/
+|   |   |-- &quot;chair&quot; -&gt; &quot;../../Professors/Paul Karrer&quot;
+|   |   `-- &quot;participants&quot;/
+|   |-- &quot;Oxygen, and its chemical and biological reactions&quot;/
+|   |   `-- &quot;chair&quot; -&gt; &quot;../../Professors/William Jackson Pope&quot;
+|   `-- &quot;Vitamins and Hormones&quot;/
+|       `-- &quot;chair&quot; -&gt; &quot;../../Professors/Frederic Swarts&quot;</code></pre>
+</div>
+<div class="terminal">
+<p>tree -FQ task06 | tail -n 24</p>
+<pre class="console"><code>`-- &quot;Solvay Conferences on Physics&quot;/
+    |-- &quot;Atoms and electrons&quot;/
+    |   `-- &quot;chair&quot; -&gt; &quot;../../Professors/Hendrik Lorentz&quot;
+    |-- &quot;Electric conductivity of metals and related problems&quot;/
+    |   `-- &quot;chair&quot; -&gt; &quot;../../Professors/Hendrik Lorentz&quot;
+    |-- &quot;Electrons and photons&quot;/
+    |   |-- &quot;chair&quot; -&gt; &quot;../../Professors/Hendrik Lorentz&quot;
+    |   `-- &quot;participants&quot;/
+    |       |-- &quot;A. Einstein&quot;
+    |       |-- &quot;E. Schrodinger&quot;
+    |       |-- &quot;H.A. Lorentz&quot;
+    |       |-- &quot;M. Planck&quot;
+    |       |-- &quot;M. Sklodowska-Curie&quot;
+    |       |-- &quot;N. Bohr&quot;
+    |       |-- &quot;W. Heisenberg&quot;
+    |       `-- &quot;W.L. Bragg&quot;
+    |-- &quot;Magnetism&quot;/
+    |   `-- &quot;chair&quot; -&gt; &quot;../../Professors/Paul Langevin&quot;
+    |-- &quot;The structure of matter&quot;/
+    |   `-- &quot;chair&quot; -&gt; &quot;../../Professors/Hendrik Lorentz&quot;
+    `-- &quot;The theory of radiation and quanta&quot;/
+        `-- &quot;chair&quot; -&gt; &quot;../../Professors/Hendrik Lorentz&quot;
+
+30 directories, 23 files</code></pre>
+</div>
+<div class="warning">
+<p>Git handles empty directories differently.</p>
+</div>
+<h2 id="task-07">Task 07</h2>
+<p>Create a compressed (with Gzip) tarball of the content of the previous task’s directory.</p>
+<p><strong>Delivery</strong>: <code>task07/task06.tgz</code></p>
+<div class="tip">
+<p>man tar</p>
+</div>
+<div class="footer"></div>
+</body>
+</html>

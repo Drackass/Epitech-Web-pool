@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div id="form1">
+        <input type="text" id="inputText" placeholder="Text">
+        <select id="inputType">
+            <option value="note">note</option>
+            <option value="email">email</option>
+            <option value="todo">todo</option>
+        </select>
+        <input type="text" id="inputTags" placeholder="Tags (comma-separated)">
+        <button onclick="submit()">Submit</button>
+    </div>
+
+    <div id="form2">
+        <input type="text" id="searchText" placeholder="Search Text">
+        <select id="searchType">
+            <option value="all">All</option>
+            <option value="note">Note</option>
+            <option value="email">Email</option>
+            <option value="todo">Todo</option>
+        </select>
+        <input type="text" id="searchTags" placeholder="Search Tags (comma-separated)">
+        <button onclick="search()">Search</button>
+        <button onclick="reset()">Reset</button>
+    </div>
+    <ul>
+        
+    </ul>
+
+    <script src="script.js"></script>
+</body>
+</html>
